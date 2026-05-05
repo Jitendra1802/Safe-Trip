@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe Trip</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <h1>Safe Trip</h1>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="testimonials.html" class="nav-link">Reviews</a></li>
+        <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <div class="header-content">
+      <h1>Safe Trip</h1>
+      <p><h2>Find Safe, Affordable, and Weather-Smart Travel Packages</h2></p>
+    </div>
+  </header>
+
+  <!-- Filters -->
+  <div class="filters">
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="🔍 Search destinations...">
+    </div>
+    
+    <label>
+      Price Range:
+      <select id="priceFilter">
+        <option value="all">All</option>
+        <option value="low">Below ₹5000</option>
+        <option value="mid">₹5000 - ₹10000</option>
+        <option value="high">₹10,000 - ₹50,000</option>
+        <option value="premium">₹50,000+</option>
+      </select>
+    </label>
+
+    <label>
+      Category:
+      <select id="categoryFilter">
+        <option value="all">All</option>
+        <option value="economy">Economy</option>
+        <option value="standard">Standard</option>
+        <option value="premium">Premium</option>
+      </select>
+    </label>
+
+    <label>
+      Sort by:
+      <select id="sortFilter">
+        <option value="default">Featured</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating">Rating</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- Travel Deals Grid -->
+  <div class="grid" id="dealsGrid">
+
+    <div class="card" data-price="low" data-category="economy" data-rating="4.5">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/jaipur/400/250.jpg" alt="Jaipur">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">❤️</div>
+      </div>
+      <div class="card-content">
+        <h3>Jaipur Weekend</h3>
+        <p>2 Nights, Hotel & Food Included</p>
+        <div class="rating">⭐ 4.5</div>
+        <p class="price">₹4,500</p>
+        <p>Weather: ☀️ Sunny</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('Jaipur Weekend')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('Jaipur Weekend')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="card" data-price="mid" data-category="economy" data-rating="4.8">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/kedarnath-temple-himalaya/400/250.jpg" alt="Kedarnath">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>KedarNath Yatra</h3>
+        <p>3 Nights, Flight + Hotel</p>
+        <div class="rating">⭐ 4.8</div>
+        <p class="price">₹8,500</p>
+        <p>Weather: ☀️ Sunny</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('KedarNath Yatra')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('KedarNath Yatra')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-price="mid" data-category="economy" data-rating="4.7">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/vaishno-devi-cave-mata/400/250.jpg" alt="Vaishno Devi">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>Vaishno Devi Yatra</h3>
+        <p>3 Nights, Train + Hotel</p>
+        <div class="rating">⭐ 4.7</div>
+        <p class="price">₹7,500</p>
+        <p>Weather: ⛅ Cool</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('Vaishno Devi Yatra')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('Vaishno Devi Yatra')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-price="mid" data-category="standard" data-rating="4.6">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/goa/400/250.jpg" alt="Goa">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>Goa Beach Trip</h3>
+        <p>3 Nights, Flight + Hotel</p>
+        <div class="rating">⭐ 4.6</div>
+        <p class="price">₹8,500</p>
+        <p>Weather: 🌴 Humid</p>
+        <p>Safety: ⚠️ Night travel caution</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('Goa Beach Trip')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('Goa Beach Trip')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="card" data-price="high" data-category="standard" data-rating="4.9">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/ooty/400/250.jpg" alt="Ooty">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>Ooty</h3>
+        <p>2 Nights, Hotel & Food Included</p>
+        <div class="rating">⭐ 4.9</div>
+        <p class="price">₹20,000</p>
+        <p>Weather: ☀️ Sunny</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('Ooty')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('Ooty')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-price="high" data-category="standard" data-rating="4.7">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/kashmir/400/250.jpg" alt="Kashmir">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>Kashmir Premium Tour</h3>
+        <p>5 Nights, Luxury Stay + Flight</p>
+        <div class="rating">⭐ 4.7</div>
+        <p class="price">₹50,000</p>
+        <p>Weather: ❄️ Snowfall</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('Kashmir Premium Tour')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('Kashmir Premium Tour')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-price="high" data-category="standard" data-rating="4.8">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/ladakh-monastery-buddhist/400/250.jpg" alt="Ladakh">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>Ladakh</h3>
+        <p>2 Nights, Hotel & Food Included</p>
+        <div class="rating">⭐ 4.8</div>
+        <p class="price">₹10,000</p>
+        <p>Weather: ⛅ Cool</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('Ladakh')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('Ladakh')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-price="premium" data-category="premium" data-rating="5.0">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/london-big-ben-parliament/400/250.jpg" alt="London">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>London Premium Trip</h3>
+        <p>3 Nights, Train + Hotel</p>
+        <div class="rating">⭐ 5.0</div>
+        <p class="price">₹75,000</p>
+        <p>Weather: ⛅ Cool</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('London Premium Trip')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('London Premium Trip')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-price="high" data-category="premium" data-rating="4.4">
+      <div class="card-image">
+        <img src="https://picsum.photos/seed/manali-rohtang-pass-mountains/400/250.jpg" alt="Manali">
+        <div class="wishlist-btn" onclick="toggleWishlist(this)">🤍</div>
+      </div>
+      <div class="card-content">
+        <h3>Manali Premium Trip</h3>
+        <p>2 Nights, Hotel & Food Included</p>
+        <div class="rating">⭐ 4.4</div>
+        <p class="price">₹20,000</p>
+        <p>Weather: ☀️ Sunny</p>
+        <p>Safety: ✅ Safe Zone</p>
+        <div class="card-actions">
+          <button class="details-btn" onclick="showDetails('Manali Premium Trip')">View Details</button>
+          <button class="book-btn" onclick="bookTrip('Manali Premium Trip')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+  </div>
+
+  <footer>
+    <p>&copy; 2025 SafeTrip Deals | All Rights Reserved</p>
+  </footer>
+
+  <!-- Trip Details Modal -->
+  <div id="detailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Wishlist Counter -->
+  <div class="wishlist-counter">
+    <span id="wishlistCount">0</span> ❤️
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Safe Trip</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("Goa-Tour-Package-1.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: repeat;
+      background-attachment: fixed;
+    }
+
+    header {
+      background: #0077b6;
+      color: rgb(125, 228, 8);
+      font-weight: bold;
+      font-family: 'Times New Roman', Times, serif;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-brand h1 {
+      margin: 0;
+      font-size: 1.8em;
+      color: rgb(125, 228, 8);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 30px;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: rgb(125, 228, 8);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: rgb(125, 228, 8);
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .header-content {
+      padding: 40px 20px;
+    }
+
+    .header-content h1 {
+      font-size: 3em;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header-content h2 {
+      font-size: 1.5em;
+      margin: 10px 0 0 0;
+      color: rgb(125, 228, 8);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 80px 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .hero-section h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    
+    .hero-section p {
+      font-size: 1.2em;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .search-section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    
+    .search-box {
+      position: relative;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: #0077b6;
+      box-shadow: 0 0 5px rgba(0, 119, 182, 0.3);
+    }
+    
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      font-size: 20px;
+    }
+    
+    .faq-categories {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .category-btn {
+      padding: 10px 20px;
+      border: 2px solid #0077b6;
+      background: white;
+      color: #0077b6;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    
+    .category-btn:hover,
+    .category-btn.active {
+      background: #0077b6;
+      color: white;
+    }
+    
+    .faq-section {
+      margin-bottom: 40px;
+    }
+    
+    .faq-section h2 {
+      color: #0077b6;
+      margin-bottom: 25px;
+      font-size: 2em;
+      border-bottom: 2px solid #0077b6;
+      padding-bottom: 10px;
+    }
+    
+    .faq-item {
+      background: white;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      color: #333;
+      transition: background-color 0.3s ease;
+    }
+    
+    .faq-question:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .faq-question.active {
+      background-color: #0077b6;
+      color: white;
+    }
+    
+    .faq-icon {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-question.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .faq-answer.active {
+      padding: 20px;
+      max-height: 500px;
+    }
+    
+    .contact-support {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      padding: 60px 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .contact-support h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    
+    .contact-support p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    
+    .contact-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .contact-btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .contact-btn-primary {
+      background: white;
+      color: #28a745;
+    }
+    
+    .contact-btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .popular-questions {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .popular-questions h3 {
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+    
+    .popular-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .popular-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .popular-list li:hover {
+      color: #0077b6;
+    }
+    
+    .popular-list li:last-child {
+      border-bottom: none;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #0077b6;
+      color: white;
+      margin-top: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #0077b6;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+        padding: 20px 0;
+        gap: 0;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-menu li {
+        margin: 15px 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .header-content h1 {
+        font-size: 2em;
+      }
+
+      .header-content h2 {
+        font-size: 1.2em;
+      }
+      
+      .faq-categories {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .category-btn {
+        width: 200px;
+        text-align: center;
+      }
+      
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-btn {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <h1>Safe Trip</h1>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="testimonials.html" class="nav-link">Reviews</a></li>
+        <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <div class="header-content">
+      <h1>FAQ</h1>
+      <p><h2>Frequently Asked Questions</h2></p>
+    </div>
+  </header>
+
+  <div class="faq-container">
+    <div class="hero-section">
+      <h1>How Can We Help You?</h1>
+      <p>Find answers to common questions about Safe Trip services, bookings, and travel policies</p>
+    </div>
+
+    <div class="search-section">
+      <div class="search-box">
+        <input type="text" class="search-input" id="faqSearch" placeholder="Search for answers...">
+        <span class="search-icon">🔍</span>
+      </div>
+    </div>
+
+    <div class="popular-questions">
+      <h3>🔥 Popular Questions</h3>
+      <ul class="popular-list">
+        <li onclick="scrollToFAQ('booking')">How do I book a trip?</li>
+        <li onclick="scrollToFAQ('payment')">What payment methods are accepted?</li>
+        <li onclick="scrollToFAQ('cancellation')">What is the cancellation policy?</li>
+        <li onclick="scrollToFAQ('safety')">How do you ensure traveler safety?</li>
+        <li onclick="scrollToFAQ('refund')">How long does refund take?</li>
+      </ul>
+    </div>
+
+    <div class="faq-categories">
+      <button class="category-btn active" onclick="filterFAQ('all')">All Topics</button>
+      <button class="category-btn" onclick="filterFAQ('booking')">Booking</button>
+      <button class="category-btn" onclick="filterFAQ('payment')">Payment</button>
+      <button class="category-btn" onclick="filterFAQ('cancellation')">Cancellation</button>
+      <button class="category-btn" onclick="filterFAQ('safety')">Safety</button>
+      <button class="category-btn" onclick="filterFAQ('travel')">Travel</button>
+    </div>
+
+    <div class="faq-section" id="booking">
+      <h2>Booking & Reservations</h2>
+      
+      <div class="faq-item" data-category="booking">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I book a trip with Safe Trip?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Booking with Safe Trip is easy! Simply browse our available trips on the homepage, select your preferred destination, click "Book Now", and fill in the registration form with your details. You can also call our customer support team at +91 80123 45678 for assistance.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="booking">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I modify my booking after confirmation?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Yes, you can modify your booking up to 72 hours before the travel date. Changes are subject to availability and may incur additional charges. Contact our support team with your booking reference number for assistance.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="booking">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Do you offer group booking discounts?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Yes! We offer special discounts for groups of 4 or more people. The discount percentage varies based on group size and destination. Please contact our group booking team at groups@safetrip.com for a customized quote.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section" id="payment">
+      <h2>Payment & Pricing</h2>
+      
+      <div class="faq-item" data-category="payment">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What payment methods do you accept?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          We accept all major credit/debit cards (Visa, Mastercard, RuPay), net banking, UPI payments, PayPal, and digital wallets like PayTM and Google Pay. We also offer EMI options on select credit cards for bookings above ₹10,000.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="payment">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Are there any hidden charges?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          No, we believe in complete transparency. The price you see includes all taxes and fees. However, personal expenses, additional activities not mentioned in the itinerary, and tips are not included.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="payment">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is my payment information secure?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Absolutely! We use industry-standard SSL encryption to protect your payment information. We are PCI DSS compliant and never store your card details on our servers. All transactions are processed through secure payment gateways.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section" id="cancellation">
+      <h2>Cancellation & Refunds</h2>
+      
+      <div class="faq-item" data-category="cancellation">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What is your cancellation policy?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Our cancellation policy varies by package type:<br>
+          • Standard packages: 15% cancellation fee up to 7 days before travel<br>
+          • Premium packages: 10% cancellation fee up to 14 days before travel<br>
+          • International packages: 20% cancellation fee up to 21 days before travel<br>
+          No refund is available for cancellations made within 48 hours of travel.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="cancellation">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How long does it take to process a refund?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Refunds are typically processed within 7-10 working days. The time taken for the amount to reflect in your account depends on your bank or payment provider. Credit card refunds may take 3-5 additional days.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="cancellation">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I transfer my booking to someone else?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Yes, you can transfer your booking to another person up to 72 hours before the travel date. A nominal transfer fee of ₹500 applies, and the new traveler must meet all eligibility requirements. Contact our support team for assistance with transfers.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section" id="safety">
+      <h2>Safety & Security</h2>
+      
+      <div class="faq-item" data-category="safety">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do you ensure traveler safety?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Safety is our top priority! We conduct thorough background checks on all partners, provide 24/7 emergency support, include travel insurance in all packages, conduct regular safety audits, and provide detailed safety briefings before each trip.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="safety">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What happens in case of emergency?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          In case of any emergency, we have a dedicated 24/7 helpline (+91 90123 45678). Our team provides immediate assistance, coordinates with local authorities, arranges medical support if needed, and keeps your family informed as per your instructions.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="safety">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is travel insurance included?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Yes, comprehensive travel insurance is included in all our packages. This covers medical emergencies, trip cancellations, lost baggage, and other unforeseen circumstances. You'll receive the insurance details along with your booking confirmation.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section" id="travel">
+      <h2>Travel Information</h2>
+      
+      <div class="faq-item" data-category="travel">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What documents do I need for travel?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Required documents vary by destination:<br>
+          • Domestic trips: Valid ID proof (Aadhar, Voter ID, Passport)<br>
+          • International trips: Valid passport with minimum 6 months validity, visa (if required), and travel insurance<br>
+          • Pilgrimage trips: ID proof and any specific documents mentioned in the itinerary
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="travel">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can you customize travel packages?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Absolutely! We offer fully customized packages based on your preferences, budget, and interests. Simply contact our travel experts with your requirements, and we'll create a personalized itinerary just for you.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="travel">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What about accommodation quality?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          We partner with certified 3-star to 5-star hotels based on package category. All accommodations are verified for safety, hygiene, and service quality. We personally inspect each property before including it in our packages.
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-support">
+      <h2>Still Have Questions?</h2>
+      <p>Our travel experts are here to help you with any queries</p>
+      <div class="contact-buttons">
+        <a href="contact.html" class="contact-btn contact-btn-primary">Contact Support</a>
+        <a href="tel:+918012345678" class="contact-btn contact-btn-secondary">Call Us</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 SafeTrip Deals | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }));
+    }
+
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const isActive = element.classList.contains('active');
+      
+      // Close all other FAQs in the same section
+      const section = element.closest('.faq-section');
+      section.querySelectorAll('.faq-question.active').forEach(q => {
+        if (q !== element) {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('active');
+        }
+      });
+      
+      // Toggle current FAQ
+      element.classList.toggle('active');
+      answer.classList.toggle('active');
+    }
+    
+    function filterFAQ(category) {
+      const items = document.querySelectorAll('.faq-item');
+      const buttons = document.querySelectorAll('.category-btn');
+      
+      // Update active button
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent === 'All Topics')) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Filter items
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+          item.style.animation = 'fadeInUp 0.5s ease both';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+    
+    function scrollToFAQ(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        // Open the first FAQ in that section
+        const firstFAQ = section.querySelector('.faq-question');
+        if (firstFAQ) {
+          setTimeout(() => toggleFAQ(firstFAQ), 500);
+        }
+      }
+    }
+    
+    // Search functionality
+    document.getElementById('faqSearch').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const items = document.querySelectorAll('.faq-item');
+      
+      items.forEach(item => {
+        const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+        
+        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+          item.style.display = 'block';
+          // Highlight matching text
+          if (searchTerm.length > 2) {
+            item.style.border = '2px solid #0077b6';
+          } else {
+            item.style.border = '';
+          }
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      
+      // Reset category filter when searching
+      if (searchTerm.length > 0) {
+        document.querySelectorAll('.category-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.querySelector('.category-btn').classList.add('active');
+      }
+    });
+    
+    // Initialize animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach((item, index) => {
+        item.style.animation = `fadeInUp 0.5s ease ${index * 0.1}s both`;
+      });
+    });
+  </script>
+</body>
+</html>

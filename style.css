@@ -1,0 +1,488 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+
+  /* Background image */
+  background-image: url("Goa-Tour-Package-1.webp");
+  background-size: cover;        /* Full screen */
+  background-position: center;   /* Center image */
+  background-repeat:repeat;  /* No repeat */
+  background-attachment: fixed;  /* Nice scrolling effect */
+}
+
+/* Search and Filters */
+.search-container {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #0077b6;
+  border-radius: 25px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 15px rgba(0, 119, 182, 0.2);
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #023e8a;
+  box-shadow: 0 0 10px rgba(2, 62, 138, 0.4);
+  transform: translateY(-2px);
+}
+
+#searchInput::placeholder {
+  color: #666;
+  font-style: italic;
+}
+
+
+header {
+  background: #0077b6;
+  color: rgb(125, 228, 8);
+  font-weight: bold;
+  font-family:'Times New Roman', Times, serif;
+  padding: 0;
+  text-align: center;
+}
+
+/* Navigation */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.nav-brand h1 {
+  margin: 0;
+  font-size: 1.8em;
+  color: rgb(125, 228, 8);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgb(125, 228, 8);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: rgb(125, 228, 8);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 80%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.header-content {
+  padding: 40px 20px;
+}
+
+.header-content h1 {
+  font-size: 3em;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header-content h2 {
+  font-size: 1.5em;
+  margin: 10px 0 0 0;
+  color: rgb(125, 228, 8);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.filters {
+  display:flex;
+  gap: 20px;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rating {
+  color: #ffa500;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.details-btn {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #0077b6;
+  background: white;
+  color: #0077b6;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.details-btn:hover {
+  background: #0077b6;
+  color: white;
+}
+
+.price {
+  font-weight: bold;
+  color: green;
+}
+
+.book-btn {
+  flex: 2;
+  padding: 10px;
+  border: none;
+  background: #70b600;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-btn:hover {
+  background: #023e8a;
+  transform: translateY(-2px);
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #0077b6;
+  color: white;
+  margin-top: 20px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+}
+
+.close:hover {
+  color: #000;
+}
+
+/* Wishlist Counter */
+.wishlist-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0077b6;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.wishlist-counter:hover {
+  transform: scale(1.1);
+  background: #023e8a;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Booking Notification */
+.booking-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 10000;
+  animation: slideIn 0.5s ease;
+  max-width: 400px;
+}
+
+.notification-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.notification-content p {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.notification-content button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.notification-content button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background-color: #0077b6;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+    padding: 20px 0;
+    gap: 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-menu li {
+    margin: 15px 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .header-content h1 {
+    font-size: 2em;
+  }
+
+  .header-content h2 {
+    font-size: 1.2em;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-container {
+    max-width: 100%;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-actions {
+    flex-direction: column;
+  }
+  
+  .modal-content {
+    margin: 10% auto;
+    width: 95%;
+  }
+}

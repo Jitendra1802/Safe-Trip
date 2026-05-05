@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews - Safe Trip</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("Goa-Tour-Package-1.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: repeat;
+      background-attachment: fixed;
+    }
+
+    header {
+      background: #0077b6;
+      color: rgb(125, 228, 8);
+      font-weight: bold;
+      font-family: 'Times New Roman', Times, serif;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-brand h1 {
+      margin: 0;
+      font-size: 1.8em;
+      color: rgb(125, 228, 8);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 30px;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: rgb(125, 228, 8);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: rgb(125, 228, 8);
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .header-content {
+      padding: 40px 20px;
+    }
+
+    .header-content h1 {
+      font-size: 3em;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header-content h2 {
+      font-size: 1.5em;
+      margin: 10px 0 0 0;
+      color: rgb(125, 228, 8);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 80px 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .hero-section h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    
+    .hero-section p {
+      font-size: 1.2em;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .rating-display {
+      font-size: 2.5em;
+      color: #ffa500;
+      margin-bottom: 10px;
+    }
+    
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      color: #666;
+      font-size: 1.1em;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .customer-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    
+    .customer-info {
+      flex: 1;
+    }
+    
+    .customer-name {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .trip-name {
+      color: #0077b6;
+      font-size: 0.9em;
+    }
+    
+    .testimonial-rating {
+      color: #ffa500;
+      margin-bottom: 15px;
+    }
+    
+    .testimonial-text {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    
+    .testimonial-date {
+      color: #999;
+      font-size: 0.9em;
+    }
+    
+    .quote-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 3em;
+      color: #0077b6;
+      opacity: 0.1;
+    }
+    
+    .filter-section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .filter-btn {
+      padding: 10px 20px;
+      border: 2px solid #0077b6;
+      background: white;
+      color: #0077b6;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #0077b6;
+      color: white;
+    }
+    
+    .add-review-section {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      padding: 60px 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .add-review-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    
+    .review-btn {
+      padding: 15px 30px;
+      background: white;
+      color: #28a745;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .review-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #0077b6;
+      color: white;
+      margin-top: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #0077b6;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+        padding: 20px 0;
+        gap: 0;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-menu li {
+        margin: 15px 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .header-content h1 {
+        font-size: 2em;
+      }
+
+      .header-content h2 {
+        font-size: 1.2em;
+      }
+      
+      .hero-section h1 {
+        font-size: 2em;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <h1>Safe Trip</h1>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="testimonials.html" class="nav-link active">Reviews</a></li>
+        <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <div class="header-content">
+      <h1>Customer Reviews</h1>
+      <p><h2>What Our Travelers Say</h2></p>
+    </div>
+  </header>
+
+  <div class="testimonials-container">
+    <div class="hero-section">
+      <h1>Customer Reviews</h1>
+      <p>Real experiences from real travelers who chose Safe Trip for their journeys</p>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="rating-display">⭐ 4.8</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2,847</div>
+        <div class="stat-label">Total Reviews</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">96%</div>
+        <div class="stat-label">Would Recommend</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support Available</div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3 style="text-align: center; color: #0077b6; margin-bottom: 20px;">Filter by Destination</h3>
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterTestimonials('all')">All Reviews</button>
+        <button class="filter-btn" onclick="filterTestimonials('Jaipur')">Jaipur</button>
+        <button class="filter-btn" onclick="filterTestimonials('Kedarnath')">Kedarnath</button>
+        <button class="filter-btn" onclick="filterTestimonials('Vaishno Devi')">Vaishno Devi</button>
+        <button class="filter-btn" onclick="filterTestimonials('Goa')">Goa</button>
+        <button class="filter-btn" onclick="filterTestimonials('Kashmir')">Kashmir</button>
+        <button class="filter-btn" onclick="filterTestimonials('International')">International</button>
+      </div>
+    </div>
+
+    <div class="testimonials-grid" id="testimonialsGrid">
+      <div class="testimonial-card" data-destination="Jaipur">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">RK</div>
+          <div class="customer-info">
+            <div class="customer-name">Rahul Kumar</div>
+            <div class="trip-name">Jaipur Weekend</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Amazing experience! The Jaipur trip was perfectly organized. Hotels were excellent, guide was knowledgeable, and the food was authentic. Safe Trip made our weekend memorable!"
+        </div>
+        <div class="testimonial-date">2 weeks ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="Kedarnath">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">PS</div>
+          <div class="customer-info">
+            <div class="customer-name">Priya Sharma</div>
+            <div class="trip-name">KedarNath Yatra</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Spiritually uplifting journey! Safe Trip arranged everything perfectly - from helicopter booking to comfortable stays. The team was very supportive throughout our pilgrimage."
+        </div>
+        <div class="testimonial-date">1 month ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="Vaishno Devi">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">AM</div>
+          <div class="customer-info">
+            <div class="customer-name">Anand Mishra</div>
+            <div class="trip-name">Vaishno Devi Yatra</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Divine experience with excellent arrangements! The VIP darshan was well-organized, and the accommodation was comfortable. Safe Trip's support team was available 24/7."
+        </div>
+        <div class="testimonial-date">3 weeks ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="Goa">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">SG</div>
+          <div class="customer-info">
+            <div class="customer-name">Sonia Gupta</div>
+            <div class="trip-name">Goa Beach Trip</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Perfect beach vacation! Great hotels, beautiful beaches, and amazing food. The only suggestion would be to include more water sports activities in the package. Overall, excellent value for money!"
+        </div>
+        <div class="testimonial-date">2 months ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="Kashmir">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">RS</div>
+          <div class="customer-info">
+            <div class="customer-name">Rajat Singh</div>
+            <div class="trip-name">Kashmir Premium Tour</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Paradise on Earth! Safe Trip's Kashmir package exceeded all expectations. Houseboat stay was magical, Shikara ride was serene, and the gardens were breathtaking. Highly recommended!"
+        </div>
+        <div class="testimonial-date">1 month ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="International">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">NP</div>
+          <div class="customer-info">
+            <div class="customer-name">Neha Patel</div>
+            <div class="trip-name">London Premium Trip</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Dream international trip! Safe Trip handled everything flawlessly - from visa assistance to guided tours. London was amazing, and the entire experience was hassle-free. Thank you team!"
+        </div>
+        <div class="testimonial-date">3 weeks ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="Jaipur">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">VK</div>
+          <div class="customer-info">
+            <div class="customer-name">Vikram Khanna</div>
+            <div class="trip-name">Jaipur Weekend</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Great family trip! Kids loved the elephant ride at Amber Fort. The guide was patient and explained everything well. Hotels were family-friendly. Would definitely book again!"
+        </div>
+        <div class="testimonial-date">1 month ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="Goa">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">AK</div>
+          <div class="customer-info">
+            <div class="customer-name">Aditi Kumar</div>
+            <div class="trip-name">Goa Beach Trip</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Best beach vacation ever! Safe Trip's arrangements were perfect - from North Goa beaches to South Goa tranquility. The seafood was amazing and the nightlife was vibrant!"
+        </div>
+        <div class="testimonial-date">2 weeks ago</div>
+      </div>
+
+      <div class="testimonial-card" data-destination="International">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-header">
+          <div class="customer-avatar">RM</div>
+          <div class="customer-info">
+            <div class="customer-name">Rohit Mehra</div>
+            <div class="trip-name">London Premium Trip</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-text">
+          "Luxury international experience! Safe Trip made our London trip unforgettable. The hotels were premium, guided tours were informative, and the entire itinerary was well-planned. Worth every penny!"
+        </div>
+        <div class="testimonial-date">1 month ago</div>
+      </div>
+    </div>
+
+    <div class="add-review-section">
+      <h2>Share Your Experience</h2>
+      <p style="font-size: 1.2em; margin-bottom: 30px;">Help other travelers by sharing your Safe Trip experience</p>
+      <button class="review-btn" onclick="alert('Review form coming soon! For now, please email your review to reviews@safetrip.com')">Write a Review</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 SafeTrip Deals | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }));
+    }
+
+    function filterTestimonials(destination) {
+      const cards = document.querySelectorAll('.testimonial-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      // Update active button
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.includes(destination) || (destination === 'all' && btn.textContent === 'All Reviews')) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Filter cards
+      cards.forEach(card => {
+        if (destination === 'all' || card.dataset.destination === destination) {
+          card.style.display = 'block';
+          card.style.animation = 'fadeInUp 0.5s ease both';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    
+    // Add staggered animation on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.testimonial-card');
+      cards.forEach((card, index) => {
+        card.style.animation = `fadeInUp 0.5s ease ${index * 0.1}s both`;
+      });
+    });
+  </script>
+</body>
+</html>
