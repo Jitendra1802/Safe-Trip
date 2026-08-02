@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trip Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="details-container">
+    <h1 id="title"></h1>
+    <img id="image" width="500">
+
+    <p id="description"></p>
+
+    <h3>Package Includes</h3>
+    <ul>
+        <li>Hotel Stay</li>
+        <li>Breakfast & Dinner</li>
+        <li>Sightseeing</li>
+        <li>Transportation</li>
+    </ul>
+
+    <h3>Price</h3>
+    <p id="price"></p>
+
+    <button onclick="history.back()">Back</button>
+</div>
+
+<script>
+const packages = {
+    goa: {
+        title: "Goa Beach Trip",
+        image: "Goa-Tour-Package-1.webp",
+        description: "Enjoy beautiful beaches, water sports and nightlife in Goa.",
+        price: "₹15,999"
+    },
+    manali: {
+        title: "Manali Adventure Trip",
+        image: "manali.jpg",
+        description: "Experience snow mountains and adventure activities.",
+        price: "₹12,999"
+    },
+    jaipur: {
+        title: "Jaipur Heritage Tour",
+        image: "jaipur.jpg",
+        description: "Explore forts, palaces and Rajasthani culture.",
+        price: "₹9,999"
+    }
+};
+
+const params = new URLSearchParams(window.location.search);
+const place = params.get("place");
+
+if(packages[place]){
+    document.getElementById("title").innerText = packages[place].title;
+    document.getElementById("image").src = packages[place].image;
+    document.getElementById("description").innerText = packages[place].description;
+    document.getElementById("price").innerText = packages[place].price;
+}
+</script>
+
+</body>
+</html>
