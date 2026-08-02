@@ -1,3 +1,8 @@
+function showDetails(tripName) {
+    window.location.href =
+        "details.html?trip=" + encodeURIComponent(tripName);
+}
+
 // Redirect to booking page
 function bookTrip(tripName) {
     window.location.href =
