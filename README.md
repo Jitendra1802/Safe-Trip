@@ -12,6 +12,7 @@
 
 ## 🌐 Live Demo
 
+* **Full-Stack Live App (Render):** [https://safe-trip-5wib.onrender.com](https://safe-trip-5wib.onrender.com)
 * **Frontend Demo (GitHub Pages):** [https://jitendra1802.github.io/Safe-Trip/](https://jitendra1802.github.io/Safe-Trip/)
 * **Local Full-Stack Server:** `http://localhost:5000`
 
@@ -57,34 +58,34 @@
 
 ```text
 Safe-Trip/
-├── controllers/              # Request handlers (MVC Controller layer)
-│   ├── bookingController.js  # Booking creation, price calculation & lookup
-│   ├── contactController.js  # Contact form handling
-│   └── packageController.js  # Package queries, filters, and detail lookups
-├── data/
-│   └── packagesData.js       # Curated packages seed & fallback dataset
-├── models/                   # Mongoose schemas
-│   ├── Booking.js            # Booking schema with auto-generated reference IDs
-│   ├── Contact.js            # Contact messages schema
-│   └── Package.js            # Comprehensive travel package schema
-├── routes/                   # Express REST API routes
-│   ├── bookingRoutes.js      # /api/bookings endpoints
-│   ├── contactRoutes.js      # /api/contact endpoints
-│   └── packageRoutes.js      # /api/packages endpoints
-├── .env.example              # Environment variables template
-├── .env                      # Local environment configuration
-├── about.html                # About Safe Trip & company vision
-├── booking.html              # Dynamic booking page with live calculator
-├── contact.html              # Contact support page connected to API
-├── details.html              # Detailed package view with itinerary
-├── faq.html                  # Frequently asked travel questions
-├── index.html                # Main homepage with deals grid & filters
-├── package.json              # Node.js project manifest & scripts
-├── script.js                 # Dynamic client-side application logic
-├── seed.js                   # Database seed script
-├── server.js                 # Express server & static asset host
-├── style.css                 # Unified modern travel portal stylesheet
-└── testimonials.html         # Verified traveler reviews & feedback
+├── Frontend/                 # Client-side UI & Static Assets
+│   ├── images/               # Destination & UI images
+│   ├── about.html            # About Safe Trip & company vision
+│   ├── booking.html          # Dynamic booking page with live calculator
+│   ├── contact.html          # Contact support page connected to API
+│   ├── details.html          # Detailed package view with itinerary
+│   ├── faq.html              # Frequently asked travel questions
+│   ├── index.html            # Main homepage with deals grid & filters
+│   ├── script.js             # Dynamic client-side application logic
+│   ├── style.css             # Unified modern travel portal stylesheet
+│   └── testimonials.html     # Verified traveler reviews & feedback
+├── Backend/                  # Node.js + Express + MongoDB Server
+│   ├── controllers/          # Request handlers (MVC Controller layer)
+│   │   ├── bookingController.js
+│   │   ├── contactController.js
+│   │   └── packageController.js
+│   ├── data/
+│   │   └── packagesData.js   # Curated packages seed & fallback dataset
+│   ├── models/               # Mongoose schemas (Booking, Contact, Package)
+│   ├── routes/               # Express REST API routes (/api/*)
+│   ├── .env.example          # Environment variables template
+│   ├── package.json          # Backend dependencies & scripts
+│   ├── seed.js               # Database seed script
+│   ├── server.js             # Express server & static asset host
+│   ├── view-bookings.js      # CLI helper to inspect bookings
+│   └── view-packages.js      # CLI helper to inspect packages
+├── package.json              # Root workspace script forwarder
+└── README.md                 # Project documentation
 ```
 
 ---
