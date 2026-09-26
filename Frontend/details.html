@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Package Details - Safe Trip</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <a href="index.html"><h1>🌍 Safe Trip</h1></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="testimonials.html" class="nav-link">Reviews</a></li>
+        <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="booking.html" class="nav-link" style="background: rgba(255,255,255,0.25); border-radius: 6px;">Book Now</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Dynamic Content Container -->
+  <div id="detailsPageContent">
+    <div class="loading-state" style="padding: 100px 20px;">
+      <div class="spinner"></div>
+      <p>Loading package details...</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Safe Trip</strong> &mdash; Travel Confidently & Safely</p>
+    <p>&copy; 2026 SafeTrip Deals | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Navigation toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    }
+
+    // Client-side fallback dataset
+    const fallbackPackages = {
+      "jaipur-weekend": {
+        title: "Jaipur Weekend",
+        destination: "Jaipur, Rajasthan",
+        description: "Immerse yourself in royal heritage, grand palaces, vibrant bazaars, and delectable Rajasthani cuisine with an expertly guided heritage tour.",
+        duration: "2 Nights / 3 Days",
+        price: 4500,
+        priceDisplay: "₹4,500",
+        rating: 4.5,
+        reviewsCount: 128,
+        weather: "Sunny, 28°C",
+        weatherIcon: "☀️",
+        safetyStatus: "Safe Zone",
+        safetyIcon: "✅",
+        safetyAdvisory: "Verified tourist corridor. 24/7 tourist helpline and escorted heritage walks active.",
+        image: "https://picsum.photos/seed/jaipur/400/250.jpg",
+        inclusions: ["2 Nights 3-Star Hotel Stay", "Daily Breakfast & Dinner", "AC Transport for Fort Visits", "Licensed Tour Guide at Amer Fort"],
+        exclusions: ["Monument entry tickets", "Personal shopping & camel rides"],
+        itinerary: [
+          { day: 1, title: "Arrival & City Palace", details: "Arrive in Pink City, hotel check-in. Afternoon visit to City Palace and Jantar Mantar observatory." },
+          { day: 2, title: "Amer & Nahargarh Forts", details: "Morning excursion to magnificent Amer Fort, photo stop at Hawa Mahal, sunset from Nahargarh." },
+          { day: 3, title: "Local Bazaars & Departure", details: "Souvenir shopping at Johari Bazaar and Bapu Bazaar, drop-off at railway station or airport." }
+        ]
+      },
+      "kedarnath-yatra": {
+        title: "KedarNath Yatra",
+        destination: "Kedarnath, Uttarakhand",
+        description: "Sacred Himalayan pilgrimage to one of the holiest Jyotirlingas, nestled amidst majestic snow-capped peaks and spiritual serenity.",
+        duration: "3 Nights / 4 Days",
+        price: 8500,
+        priceDisplay: "₹8,500",
+        rating: 4.8,
+        reviewsCount: 340,
+        weather: "Cool, 12°C",
+        weatherIcon: "⛅",
+        safetyStatus: "Safe Zone",
+        safetyIcon: "✅",
+        safetyAdvisory: "Biometric registration required. Medical fitness certificate recommended. Oxygen monitoring assistance provided.",
+        image: "https://picsum.photos/seed/kedarnath-temple-himalaya/400/250.jpg",
+        inclusions: ["Haridwar to Sonprayag Shared Transport", "3 Nights Guest House / Camp Stay", "Pure Vegetarian Meals (Sattvic)", "Yatra Assistance & Medical Kit"],
+        exclusions: ["Helicopter or pony/palki charges", "Personal porter services"],
+        itinerary: [
+          { day: 1, title: "Haridwar to Guptkashi", details: "Scenic drive along Mandakini River. Evening temple visit and briefing." },
+          { day: 2, title: "Trek to Kedarnath", details: "Early morning transfer to Gaurikund. 16 km scenic trek up to Kedarnath Dham." },
+          { day: 3, title: "Darshan & Return to Sonprayag", details: "Morning Aarti and Darshan at Kedarnath Temple. Trek back down to Sonprayag." },
+          { day: 4, title: "Return to Haridwar", details: "Scenic drive back to Haridwar with unforgettable Himalayan memories." }
+        ]
+      },
+      "goa-beach-trip": {
+        title: "Goa Beach Trip",
+        destination: "North & South Goa",
+        description: "Sun, sand, surf, and vibrant nightlife! Relax on golden beaches, explore Portuguese architecture, and indulge in water sports.",
+        duration: "3 Nights / 4 Days",
+        price: 8500,
+        priceDisplay: "₹8,500",
+        rating: 4.6,
+        reviewsCount: 412,
+        weather: "Tropical & Warm, 30°C",
+        weatherIcon: "🌴",
+        safetyStatus: "Night Caution",
+        safetyIcon: "⚠️",
+        safetyAdvisory: "Safe patrolled beaches during daylight. Follow lifeguard beach flag warnings; caution during late-night beach walks.",
+        image: "https://picsum.photos/seed/goa/400/250.jpg",
+        inclusions: ["Resort Stay near Calangute / Baga", "Complimentary Breakfast", "South Goa Sightseeing Tour", "Mandovi River Sunset Cruise"],
+        exclusions: ["Watersports package (scuba, jet-ski)", "Club entry charges"],
+        itinerary: [
+          { day: 1, title: "Arrival & Beach Vibes", details: "Welcome drink at resort. Sunset stroll and beach shacks at Baga Beach." },
+          { day: 2, title: "North Goa Highlights", details: "Visit Aguada Fort, Chapora Fort (Dil Chahta Hai point), and Anjuna flea market." },
+          { day: 3, title: "Old Goa & Sunset Cruise", details: "Explore Basilica of Bom Jesus, Se Cathedral, followed by a vibrant evening cruise." },
+          { day: 4, title: "Farewell Goa", details: "Breakfast, souvenir shopping in Panaji, transfer to airport/station." }
+        ]
+      }
+    };
+
+    async function loadDetails() {
+      const contentEl = document.getElementById('detailsPageContent');
+      const params = new URLSearchParams(window.location.search);
+      const tripIdentifier = params.get('trip') || params.get('id') || params.get('place') || 'jaipur-weekend';
+
+      let pkg = null;
+
+      // Try API first
+      try {
+        const res = await fetch(`/api/packages/${encodeURIComponent(tripIdentifier)}`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data) {
+            pkg = json.data;
+          }
+        }
+      } catch (err) {
+        console.warn('Backend API not responding, checking local fallback:', err.message);
+      }
+
+      // Check client fallback
+      if (!pkg) {
+        const slugKey = tripIdentifier.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        pkg = fallbackPackages[slugKey] || fallbackPackages['jaipur-weekend'];
+      }
+
+      if (!pkg) {
+        contentEl.innerHTML = `
+          <div class="container" style="text-align: center; padding: 80px 20px;">
+            <h2>Package Not Found</h2>
+            <p style="color: #64748b; margin: 16px 0 24px;">The travel package you are looking for could not be loaded.</p>
+            <a href="index.html" class="btn book-btn">Back to All Deals</a>
+          </div>
+        `;
+        return;
+      }
+
+      const safetyIsZone = (pkg.safetyStatus || 'Safe Zone').includes('Safe');
+      const advisoryClass = safetyIsZone ? 'safe' : 'caution';
+      const inclusions = pkg.inclusions && pkg.inclusions.length > 0 
+        ? pkg.inclusions 
+        : ["Hotel Accommodation", "Daily Breakfast", "Sightseeing Transfers", "Verified Tour Assistance"];
+      const exclusions = pkg.exclusions && pkg.exclusions.length > 0
+        ? pkg.exclusions
+        : ["Personal Expenses", "Entry monument charges", "Emergency medical expenses"];
+      const itinerary = pkg.itinerary && pkg.itinerary.length > 0
+        ? pkg.itinerary
+        : [
+            { day: 1, title: "Arrival & Orientation", details: "Arrive at the destination, hotel check-in, orientation tour, and welcome dinner." },
+            { day: 2, title: "Guided Sightseeing", details: "Full day exploration of key historical monuments and natural attractions with a local guide." },
+            { day: 3, title: "Leisure & Departure", details: "Breakfast, local souvenir shopping, and scheduled departure transfer." }
+          ];
+
+      contentEl.innerHTML = `
+        <!-- Hero Header -->
+        <div class="details-hero" style="background-image: url('${pkg.image}');">
+          <div class="details-hero-overlay"></div>
+          <div class="details-hero-content">
+            <div class="breadcrumb">
+              <a href="index.html">Home</a> &gt; <a href="index.html">Deals</a> &gt; <span>${pkg.title}</span>
+            </div>
+            <h1 style="font-size: 2.4rem; font-weight: 800; margin-bottom: 8px;">${pkg.title}</h1>
+            <p style="font-size: 1.1rem; color: #e2e8f0; margin-bottom: 16px;">📍 ${pkg.destination || 'India'}</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <span class="tag-pill tag-weather" style="font-size: 0.9rem; padding: 6px 12px;">${pkg.weatherIcon || '☀️'} Weather: ${pkg.weather || 'Pleasant'}</span>
+              <span class="tag-pill ${safetyIsZone ? 'tag-safety' : 'tag-caution'}" style="font-size: 0.9rem; padding: 6px 12px;">${pkg.safetyIcon || '✅'} Safety: ${pkg.safetyStatus || 'Safe Zone'}</span>
+              <span class="hero-pill" style="font-size: 0.9rem; padding: 6px 12px;">⏳ Duration: ${pkg.duration || '3 Days'}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="details-grid-layout">
+          <!-- Main Content -->
+          <div class="details-main">
+            <!-- Overview -->
+            <div class="detail-card">
+              <h3>📖 Tour Overview</h3>
+              <p style="color: #334155; font-size: 1.05rem; line-height: 1.7;">${pkg.description}</p>
+            </div>
+
+            <!-- Safety Advisory -->
+            <div class="advisory-box ${advisoryClass}">
+              <h4 style="margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                ${pkg.safetyIcon || '🛡️'} Safety Advisory & Ground Intel
+              </h4>
+              <p style="font-size: 0.95rem; line-height: 1.5;">${pkg.safetyAdvisory || 'Verified safe travel zone. Standard safety protocols in place with 24/7 dedicated support.'}</p>
+            </div>
+
+            <!-- Itinerary -->
+            <div class="detail-card">
+              <h3>🗓️ Day-by-Day Itinerary</h3>
+              <div class="timeline">
+                ${itinerary.map(item => `
+                  <div class="timeline-item">
+                    <div class="timeline-day">Day ${item.day}</div>
+                    <div class="timeline-title">${item.title}</div>
+                    <div class="timeline-desc">${item.details}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Inclusions & Exclusions -->
+            <div class="detail-card">
+              <h3>📋 What's Included & Excluded</h3>
+              <div class="inclusions-grid">
+                <div>
+                  <h4 style="color: #15803d; margin-bottom: 12px;">Package Inclusions</h4>
+                  <ul class="check-list">
+                    ${inclusions.map(inc => `<li><span class="check-icon">✓</span> ${inc}</li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <h4 style="color: #b91c1c; margin-bottom: 12px;">Package Exclusions</h4>
+                  <ul class="cross-list">
+                    ${exclusions.map(exc => `<li><span class="cross-icon">✕</span> ${exc}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Sidebar -->
+          <div class="details-sidebar">
+            <div class="sidebar-card">
+              <div class="sidebar-price-tag">
+                <div class="per-person">Price per adult</div>
+                <div class="amount">${pkg.priceDisplay || ('₹' + (pkg.price || 0).toLocaleString('en-IN'))}</div>
+                <div style="font-size: 0.85rem; color: #10b981; font-weight: 600; margin-top: 4px;">✔ All Taxes & Inclusions Applicable</div>
+              </div>
+
+              <div style="margin-bottom: 20px; font-size: 0.95rem; display: flex; flex-direction: column; gap: 8px; color: #475569;">
+                <div>⭐ <strong>${pkg.rating || 4.5}</strong> / 5.0 (${pkg.reviewsCount || 50} verified traveler reviews)</div>
+                <div>⏳ <strong>Duration:</strong> ${pkg.duration || 'Multi-day'}</div>
+                <div>🏷️ <strong>Category:</strong> <span style="text-transform: capitalize;">${pkg.category || 'Standard'}</span></div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="booking.html?trip=${encodeURIComponent(pkg.title)}" class="btn book-btn" style="width: 100%; padding: 14px; font-size: 1rem;">
+                  Book This Trip Now ➔
+                </a>
+                <a href="index.html" class="btn details-btn" style="width: 100%; text-align: center;">
+                  &larr; Browse Other Packages
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDetails);
+  </script>
+</body>
+</html>

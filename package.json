@@ -1,0 +1,13 @@
+{
+  "name": "safe-trip-workspace",
+  "version": "1.0.0",
+  "description": "Root workspace scripts for Safe Trip (Frontend + Backend)",
+  "scripts": {
+    "postinstall": "npm --prefix Backend install",
+    "start": "npm --prefix Backend start",
+    "dev": "npm --prefix Backend run dev",
+    "seed": "npm --prefix Backend run seed",
+    "view:bookings": "npm --prefix Backend run view:bookings",
+    "view:packages": "npm --prefix Backend run view:packages"
+  }
+}

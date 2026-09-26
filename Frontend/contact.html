@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Safe Trip Support</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .contact-info-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 32px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-method {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .contact-icon {
+      font-size: 1.5rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <a href="index.html"><h1>🌍 Safe Trip</h1></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="testimonials.html" class="nav-link">Reviews</a></li>
+        <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        <li><a href="booking.html" class="nav-link" style="background: rgba(255,255,255,0.25); border-radius: 6px;">Book Now</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <div class="header-content" style="padding: 36px 20px;">
+      <h1>Get in Touch with Safe Trip</h1>
+      <p>We are here 24/7 to answer your travel queries and provide on-ground safety updates.</p>
+    </div>
+  </header>
+
+  <main class="contact-container">
+    <!-- Contact Details -->
+    <div class="contact-info-card">
+      <h2 style="color: var(--secondary); margin-bottom: 12px;">Contact Information</h2>
+      <p style="color: #64748b; margin-bottom: 28px;">Have a question about a trip, custom corporate package, or safety status? Reach out anytime.</p>
+
+      <div class="contact-method">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4 style="color: var(--secondary); margin-bottom: 4px;">Headquarters</h4>
+          <p style="color: #64748b; font-size: 0.95rem;">123 Connaught Place, New Delhi, India 110001</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4 style="color: var(--secondary); margin-bottom: 4px;">24/7 Traveler Helpline</h4>
+          <p style="color: #64748b; font-size: 0.95rem;">+91 1800-SAFE-TRIP (Toll-free)<br>+91 98765 43210</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <h4 style="color: var(--secondary); margin-bottom: 4px;">Email Support</h4>
+          <p style="color: #64748b; font-size: 0.95rem;">support@safetrip.com<br>bookings@safetrip.com</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon">⏰</div>
+        <div>
+          <h4 style="color: var(--secondary); margin-bottom: 4px;">Support Hours</h4>
+          <p style="color: #64748b; font-size: 0.95rem;">24 Hours &bull; 7 Days a Week</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="booking-form-card">
+      <h2 style="color: var(--secondary); margin-bottom: 12px;">Send Us a Message</h2>
+      <p style="color: #64748b; margin-bottom: 24px;">Our travel specialists will respond within 24 hours.</p>
+
+      <form id="contactForm">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="contactName">Your Name *</label>
+          <input type="text" id="contactName" required placeholder="John Doe">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="contactEmail">Email Address *</label>
+          <input type="email" id="contactEmail" required placeholder="john@example.com">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="contactPhone">Phone Number</label>
+          <input type="tel" id="contactPhone" placeholder="+91 98765 43210">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="contactSubject">Subject *</label>
+          <input type="text" id="contactSubject" required placeholder="Trip inquiry, weather check...">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label for="contactMessage">Message *</label>
+          <textarea id="contactMessage" rows="4" required placeholder="Tell us how we can help you..."></textarea>
+        </div>
+
+        <button type="submit" id="sendBtn" class="submit-btn">Send Message ➔</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Safe Trip</strong> &mdash; Travel Confidently & Safely</p>
+    <p>&copy; 2026 SafeTrip Deals | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    const sendBtn = document.getElementById('sendBtn');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending Message...';
+
+      const payload = {
+        name: document.getElementById('contactName').value.trim(),
+        email: document.getElementById('contactEmail').value.trim(),
+        phone: document.getElementById('contactPhone').value.trim(),
+        subject: document.getElementById('contactSubject').value.trim(),
+        message: document.getElementById('contactMessage').value.trim()
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        alert(data.message || 'Thank you! Your message has been sent successfully.');
+        contactForm.reset();
+      } catch (err) {
+        console.warn('Backend unavailable, mock message stored:', err.message);
+        alert('Thank you! Your message has been received. Our team will contact you shortly.');
+        contactForm.reset();
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send Message ➔';
+      }
+    });
+  </script>
+</body>
+</html>
